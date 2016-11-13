@@ -1,0 +1,92 @@
+<!-- BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a href="#/cookies">Печеньки</a>
+        </li>
+    </ul>
+    <div class="page-toolbar">
+        <div class="btn-group pull-right">
+            <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" dropdown-menu-hover data-delay="1000" data-close-others="true"> Фильтр
+                <i class="fa fa-angle-down"></i>
+            </button>
+            <ul class="dropdown-menu pull-right" role="menu">
+                <li>
+                    <a href="javascript:;" ng-click="cookiesList.load(3);">
+                        <i class="icon-user"></i> По дате </a>
+                </li>
+                <li>
+                    <a href="javascript:;" ng-click="cookiesList.load(1);">
+                        <i class="icon-present"></i> По лайкам
+                        
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;" ng-click="cookiesList.load(2);">
+                        <i class="icon-basket"></i> По дислайкам </a>
+                </li>                
+            </ul>
+        </div>
+    </div>
+</div>
+<h3 class="page-title"> Главная
+    <small>список печенек</small>
+    <a style="float: right;" href="javascript:;" ng-click="cookiesList.openAddCookiesPage()" class="btn btn-sm green"> Добавить печеньку
+                                                                        <i class="fa fa-plus"></i>
+                                                                    </a>
+</h3>
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="portlet light portlet-fit bordered">
+                                <div class="portlet-title">
+                                    <div class="caption">
+                                        <i class=" icon-layers font-green"></i>
+                                        <span class="caption-subject font-green bold uppercase">Default</span>
+                                    </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <div class="mt-element-card mt-element-overlay">
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" ng-repeat="item in cookiesList.cookies">
+                                                <div class="mt-card-item">
+                                                    <div class="mt-card-avatar mt-overlay-1">
+                                                        <img ng-src="{{item.img}}" />
+                                                     
+                                                    </div>
+                                                    <div class="mt-card-content">
+                                                        <h3 class="mt-card-name" ng-bind="::item.title"></h3>
+                                                        <p class="mt-card-desc font-grey-mint" ng-bind="::item.description"></p>
+                                                        <div class="mt-card-social">
+                                                            <ul>
+                                                                <li>
+                                                                    <a href="javascript:;" ng-click="cookiesList.likeCookies(item)">
+                                                                        {{cookiesList.countLikes(item.likes)}}
+                                                                        <i class="fa fa-hand-o-up"></i>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="javascript:;" ng-click="cookiesList.dislikeCookies(item)">
+                                                                    {{cookiesList.countLikes(item.dislikes)}}
+                                                                        <i class="fa fa-hand-o-down"></i>
+                                                                    </a>
+                                                                </li>                                                             
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                      
+                   
+                         
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <center><button ng-click="cookiesList.getOffset()" class="btn">Показать еще...</button></center>
+                    </div>
+<!-- END MAIN CONTENT -->

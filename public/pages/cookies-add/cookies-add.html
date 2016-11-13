@@ -1,0 +1,77 @@
+<!-- <div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a href="#/cookies">Печеньки</a>
+        </li>
+    </ul>
+    <ul class="page-breadcrumb">
+        <li>
+            <a href="#/add-cookies"> Добавление печеньки</a>
+        </li>
+    </ul>
+</div> -->
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN VALIDATION STATES-->
+        <div class="portlet light portlet-fit portlet-form bordered">
+            <div class="portlet-title">
+                <div class="caption">
+                    <!-- <i class="icon-settings font-red"></i> -->
+                    <span class="caption-subject sbold uppercase">Добавление печеньки</span>
+                </div>                                  
+            </div>
+            <div class="portlet-body">
+                <!-- BEGIN FORM-->
+                <form id="form_sample_1" name="form" class="form-horizontal" novalidate>
+                    <div class="form-body">
+                                                                
+                        <div class="form-group" ng-class="{'has-error': (form.$submitted || form.cName.$touched) && form.cName.$error.required}">
+                            <label class="control-label col-md-3">Название
+                                <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" required="" data-ng-model="cookiesAdd.cookies.title" name="cName" class="form-control" /> 
+                                <div ng-show="form.$submitted || form.cName.$touched"> 
+                                    <span class="help-block" ng-show="form.cName.$error.required"> Пожалуйста, введите название </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error': (form.$submitted || form.cDescription.$touched) && form.cDescription.$error.required}">
+                            <label class="control-label col-md-3">Описание
+                                <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-4">
+                                <input name="cDescription" required="" data-ng-model="cookiesAdd.cookies.description" type="text" class="form-control" />
+                                <div ng-show="form.$submitted || form.cDescription.$touched"> 
+                                    <span class="help-block" ng-show="form.cDescription.$error.required"> Пожалуйста, введите описание </span>
+                                </div> 
+                            </div>
+                        </div>                                            
+                        <div class="form-group" ng-class="{'has-error': (form.$submitted || form.file.$touched) && form.file.$error.required}">
+                            <label class="control-label col-md-3">Картинка
+                                <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-4">
+                                <input type="file" ngf-select ng-model="cookiesAdd.cookies.img" required="" name="file" accept="image/*" ngf-max-size="4MB">
+                                <div ng-show="form.$submitted || form.file.$touched"> 
+                                    <span class="help-block" ng-show="form.file.$error.required"> Пожалуйста, добавьте картинку </span>
+                                </div>
+                            </div>                                            
+                        </div>
+                        <div class="form-actions">
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <input type="submit" value="Сохранить" class="btn green" ng-click="cookiesAdd.save(form)"/>
+                                    <a href="#/cookies" type="button" class="btn grey-salsa btn-outline">Отмена</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!-- END FORM-->
+            </div>
+        </div>
+        <!-- END VALIDATION STATES-->
+    </div>
+</div>

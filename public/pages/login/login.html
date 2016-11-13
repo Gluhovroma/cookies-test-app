@@ -1,0 +1,46 @@
+<!-- BEGIN LOGIN -->
+<div class="content">
+    <!-- BEGIN LOGIN FORM -->            
+    <form class="form-horizontal" name="form" novalidate>
+        <div class="form-body">
+            <h3 class="form-section">Авторизация</h3>    
+            <div class="form-group">
+                   <div class="col-md-4 alert alert-danger" ng-class="{'display-hide': login.error_message == ''}">
+                      
+                        <span>{{login.error_message}}</span>
+                   </div>
+                   <div class="col-md-4 alert alert-success" ng-class="{'display-hide': login.success_message == ''}">
+                       
+                        <span>{{login.success_message}}</span>
+                   </div>
+            </div>
+                                               
+            <div class="form-group" ng-class="{'has-error': (form.$submitted || form.uName.$touched) && form.uName.$error.required}">
+                <div class="col-md-4">
+                    <input class="form-control form-control-solid placeholder-no-fix" ng-model="login.loginData.username" type="text" placeholder="Username" name="uName" required=""/>
+                    <div ng-show="form.$submitted || form.uName.$touched"> 
+                        <span class="help-block" ng-show="form.uName.$error.required"> Пожалуйста, введите логин </span>
+                    </div>
+                    
+                </div>
+            </div>  
+             <div class="form-group" ng-class="{'has-error': (form.$submitted || form.uPassword.$touched) && form.uPassword.$error.required}">
+                <div class="col-md-4">
+                    <input class="form-control form-control-solid placeholder-no-fix" ng-model="login.loginData.password" type="password" placeholder="Password" name="uPassword" required=""/>
+                    
+                    <div ng-show="form.$submitted || form.uPassword.$touched"> 
+                        <span class="help-block" ng-show="form.uPassword.$error.required"> Пожалуйста, введите пароль </span>
+                    </div>
+                </div>
+            </div>           
+        </div>
+        <div class="form-actions">
+            <div class="row">
+                <div class="col-md-offset-3 col-md-9">
+                    <input type="submit" value="Войти" class="btn green uppercase" ng-click="login.submit(form)"/>                
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- END LOGIN FORM -->       
+</div>
