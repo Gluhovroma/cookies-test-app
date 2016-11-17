@@ -19,11 +19,13 @@ module.exports = function(passport){
 	var userData = new UserData(pool);
 
 	// Passport needs to be able to serialize and deserialize users to support persistent login sessions
-	passport.serializeUser(function(user, done) {		
+	passport.serializeUser(function(user, done) {
+	console.log("serializeUser");		
 		done(null, user.id);
 	});
 
-	passport.deserializeUser(function(id, done) {		
+	passport.deserializeUser(function(id, done) {
+	console.log("deserializeUser");		
 		userData.findById(id)
 			.then(user => {				
 				done(null, user);
@@ -34,7 +36,7 @@ module.exports = function(passport){
 			passReqToCallback : true
 		},
 		function(req, username, password, done) { 
-
+			console.log("work");
 			userData.findByName(username)
 				.then((user) => {
 

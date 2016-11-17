@@ -18,7 +18,7 @@ angular.module('MetronicApp').controller('LoginController', ['$rootScope', '$sco
         if (form.$valid) {
             authService.login(login.loginData).then(function (response) {
                 console.log(response);
-                login.success_message = "Здравствуйте " + response.data.userName + ", вы успешно авторизовались! Через 3 секунды вы будете перенаправлены на список печенек!";
+                login.success_message = "Здравствуйте " + response.data.user.login + ", вы успешно авторизовались! Через 3 секунды вы будете перенаправлены на список печенек!";
                 
                 login.error_message = '';
                 setTimeout(function() {

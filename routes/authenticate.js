@@ -3,21 +3,22 @@ var router = express.Router();
 
 module.exports = function(passport){
 
-	//sends successful login state back to angular
-	router.get('/success', function(req, res){
-		res.send({state: 'success', user: req.user ? req.user : null});
-	});
+		
+	router.post('/login',function(req, res, next) {
+	  passport.authenticate('login', function(err, user) {
+	  	
+	  	if (err) { return next(err); }
+	  	
+    	if (!user) { 
+    		return res.status(200).send({state: 'failure', user: null, message: "Invalid username or password"}); 
 
-	//sends failure login state back to angular
-	router.get('/failure', function(req, res){
-		res.send({state: 'failure', user: null, message: "Invalid username or password"});
+    	}
+	    req.logIn(user, function(err) {
+	       res.status(err ? 500 : 200).send(err ? err : {state: 'success', user: req.user ? req.user : null});
+	      
+	    });
+	  })(req, res, next);
 	});
-
-	//log in
-	router.post('/login', passport.authenticate('login', {
-		successRedirect: '/auth/success',
-		failureRedirect: '/auth/failure'
-	}));	
 
 	//log out
 	router.get('/signout', function(req, res) {

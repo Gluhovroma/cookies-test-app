@@ -19,9 +19,10 @@
             $http.post('/auth/login', loginData)
             	.then(function (response) {
 	            	if(response.data.state == 'success') {
+                        console.log(response.data);
                         var user = {
-                            userName: response.data.user[0].login,
-                            id: response.data.user[0].id
+                            userName: response.data.user.login,
+                            id: response.data.user.id
                         }
 						localStorageService.set('authorizationData', user);
 	                	_authentication.isAuth = true;
